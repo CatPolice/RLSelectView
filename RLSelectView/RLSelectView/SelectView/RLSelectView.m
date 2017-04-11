@@ -8,6 +8,15 @@
 
 #import "RLSelectView.h"
 
+@interface RLSelectView()<UIScrollViewDelegate>
+{
+    UIScrollView *_scrollview;
+    
+    UIButton *_currButton;
+}
+
+@end
+
 @implementation RLSelectView
 
 static float button_space_horiz = 10;       //视图横向间距
@@ -20,7 +29,7 @@ NSInteger selectIndex;
     
     self = [super initWithCoder:aDecoder];
     if (self) {
-        selectIndex = -1;
+        _currButton.tag = -1;
     }
     return self;
 }
@@ -29,13 +38,14 @@ NSInteger selectIndex;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        selectIndex = -1;
+        _currButton.tag = -1;
     }
     return self;
 }
 
 
 - (void)awakeFromNib{
+    [super awakeFromNib];
 }
 
 
@@ -63,52 +73,54 @@ NSInteger selectIndex;
         }
     }
     
-    float view_wide = (self.frame.size.width - button_space_horiz*4) / 3;
+    float view_wide = (self.frame.size.width - button_space_horiz*(self.lines + 1)) / self.lines;
     
-    for (int i = 0; i < self.contentList.count; i++) {
-        if (i < 3) {
-            CGRect rect = CGRectMake(button_space_horiz + (view_wide+button_space_horiz)*i, 0, view_wide, button_size_high);
-            [self creatButtonItem:rect withIndex:i];
+    NSInteger count = self.contentList.count / self.lines;
+    BOOL autoScroll = NO;
+    if (button_space_vertical*(count + 1) + button_size_high * count > self.frame.size.height) {
+        _scrollview = [[UIScrollView alloc] initWithFrame:self.bounds];
+        _scrollview.contentSize = CGSizeMake(self.frame.size.width, button_space_vertical*(count + 1) + button_size_high * count);
+        [self addSubview:_scrollview];
+        autoScroll = YES;
+    }
+    
+    
+    NSInteger index = 0;
+    for (int i = 0; i < (int)self.contentList.count; i++) {
+        if (i % self.lines == 0 && i > 0) {
+            index ++;
+        }
+        
+        CGRect rect = CGRectMake(button_space_horiz + (view_wide+button_space_horiz)*(i - index*self.lines), (button_size_high + button_space_vertical)*index + button_space_vertical, view_wide, button_size_high);
+        
+        if (autoScroll) {
+            [_scrollview addSubview:[self creatButtonItem:rect withIndex:i]];
         }else{
-            CGRect rect = CGRectMake(button_space_horiz + (view_wide+button_space_horiz)*(i - 3), button_size_high + button_space_vertical, view_wide, button_size_high);
-            [self creatButtonItem:rect withIndex:i];
+            [self addSubview:[self creatButtonItem:rect withIndex:i]];
         }
     }
 }
 
-- (void)creatButtonItem:(CGRect)rect withIndex:(NSInteger )i{
-    
-    //            UIControl *control = [[UIControl alloc] initWithFrame:CGRectMake(view_space + (view_wide+view_space)*i, 0, view_wide, 27)];
-    //            control.backgroundColor = [UIColor redColor];
-    //            UILabel *lable = [[UILabel alloc] initWithFrame:control.frame];
-    //            lable.text = [self.contentList objectAtIndex:i];
-    //            lable.textColor = [UIColor yellowColor];
-    //
-    //            [control addSubview:lable];
-    //            [self addSubview:control];
-    //
-    //            [control addTarget:self action:@selector(clickAction) forControlEvents:UIControlEventTouchDown];
-    
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(rect.origin.x,rect.origin.y,rect.size.width, rect.size.height)];
+- (UIButton *)creatButtonItem:(CGRect)rect withIndex:(NSInteger )i{
+    UIButton *button = [[UIButton alloc] initWithFrame:(CGRect){rect.origin.x,rect.origin.y,rect.size.width, rect.size.height}];
     button.backgroundColor = [UIColor redColor];
     [button setTitle:[self.contentList objectAtIndex:i] forState:UIControlStateNormal];
     button.tag = i;
     button.titleLabel.textAlignment = NSTextAlignmentCenter;
     button.titleLabel.font = [UIFont systemFontOfSize:14.0];
     [button addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchDown];
-    
-    if (selectIndex == i) {
-        button.backgroundColor = [UIColor yellowColor];
-    }
-    
-    [self addSubview:button];
+
+    return button;
 }
 
 
-
 - (void)clickAction:(UIButton *)sender{
-    selectIndex = sender.tag;
-    [self reloadData:YES];
+    sender.backgroundColor = [UIColor yellowColor];
+    if (_currButton.tag != sender.tag) {
+        _currButton.backgroundColor = [UIColor redColor];
+        _currButton = sender;
+    }
+    
     if (_didClickViewItem) {
         _didClickViewItem([self.contentList objectAtIndex:sender.tag]);
     }

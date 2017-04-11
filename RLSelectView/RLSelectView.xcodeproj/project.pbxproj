@@ -13,8 +13,7 @@
 		B8529FE71D7517CA00632B57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8529FE51D7517CA00632B57 /* Main.storyboard */; };
 		B8529FE91D7517CA00632B57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8529FE81D7517CA00632B57 /* Assets.xcassets */; };
 		B8529FEC1D7517CA00632B57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8529FEA1D7517CA00632B57 /* LaunchScreen.storyboard */; };
-		B8529FF61D75182600632B57 /* RLSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8529FF41D75182600632B57 /* RLSelectView.m */; settings = {ASSET_TAGS = (); }; };
-		B8529FF71D75182600632B57 /* RLSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8529FF51D75182600632B57 /* RLSelectView.xib */; settings = {ASSET_TAGS = (); }; };
+		B854E78B1E9CBC9D00B88C35 /* RLSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = B854E78A1E9CBC9D00B88C35 /* RLSelectView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,9 +27,8 @@
 		B8529FE81D7517CA00632B57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8529FEB1D7517CA00632B57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8529FED1D7517CA00632B57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8529FF31D75182600632B57 /* RLSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLSelectView.h; sourceTree = "<group>"; };
-		B8529FF41D75182600632B57 /* RLSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLSelectView.m; sourceTree = "<group>"; };
-		B8529FF51D75182600632B57 /* RLSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLSelectView.xib; sourceTree = "<group>"; };
+		B854E7891E9CBC9D00B88C35 /* RLSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLSelectView.h; sourceTree = "<group>"; };
+		B854E78A1E9CBC9D00B88C35 /* RLSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLSelectView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,13 +61,11 @@
 		B8529FDB1D7517CA00632B57 /* RLSelectView */ = {
 			isa = PBXGroup;
 			children = (
+				B854E7881E9CBC9D00B88C35 /* SelectView */,
 				B8529FDF1D7517CA00632B57 /* AppDelegate.h */,
 				B8529FE01D7517CA00632B57 /* AppDelegate.m */,
 				B8529FE21D7517CA00632B57 /* ViewController.h */,
 				B8529FE31D7517CA00632B57 /* ViewController.m */,
-				B8529FF31D75182600632B57 /* RLSelectView.h */,
-				B8529FF41D75182600632B57 /* RLSelectView.m */,
-				B8529FF51D75182600632B57 /* RLSelectView.xib */,
 				B8529FE51D7517CA00632B57 /* Main.storyboard */,
 				B8529FE81D7517CA00632B57 /* Assets.xcassets */,
 				B8529FEA1D7517CA00632B57 /* LaunchScreen.storyboard */,
@@ -85,6 +81,15 @@
 				B8529FDD1D7517CA00632B57 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B854E7881E9CBC9D00B88C35 /* SelectView */ = {
+			isa = PBXGroup;
+			children = (
+				B854E7891E9CBC9D00B88C35 /* RLSelectView.h */,
+				B854E78A1E9CBC9D00B88C35 /* RLSelectView.m */,
+			);
+			path = SelectView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,7 +118,7 @@
 		B8529FD11D7517CA00632B57 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = gavin;
 				TargetAttributes = {
 					B8529FD81D7517CA00632B57 = {
@@ -146,7 +151,6 @@
 			files = (
 				B8529FEC1D7517CA00632B57 /* LaunchScreen.storyboard in Resources */,
 				B8529FE91D7517CA00632B57 /* Assets.xcassets in Resources */,
-				B8529FF71D75182600632B57 /* RLSelectView.xib in Resources */,
 				B8529FE71D7517CA00632B57 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,7 +164,7 @@
 			files = (
 				B8529FE41D7517CA00632B57 /* ViewController.m in Sources */,
 				B8529FE11D7517CA00632B57 /* AppDelegate.m in Sources */,
-				B8529FF61D75182600632B57 /* RLSelectView.m in Sources */,
+				B854E78B1E9CBC9D00B88C35 /* RLSelectView.m in Sources */,
 				B8529FDE1D7517CA00632B57 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,8 +204,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -243,8 +249,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -308,6 +316,7 @@
 				B8529FF21D7517CA00632B57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

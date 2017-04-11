@@ -9,7 +9,9 @@
 #import "ViewController.h"
 #import "RLSelectView.h"
 
+
 @interface ViewController ()
+
 @property (weak, nonatomic) IBOutlet RLSelectView *selectView;
 
 @end
@@ -21,19 +23,17 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    //    RLSelectView *view = [[RLSelectView alloc] initWithFrame:CGRectMake(0, 100, 320, 100)];
-    //    view.contentList = @[@"1",@"2",@"3"];
-    //
-    //
-    //    [self.view addSubview:view];
+    self.selectView.lines = 1;
+    self.selectView.contentList = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13"];
     
     
-    self.selectView.contentList = @[@"1",@"2",@"3",@"4",@"5",@"6"];
     [self.selectView didClickViewCallback:^(id content) {
         NSLog(@"%@",content);
+        
     }];
-    
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

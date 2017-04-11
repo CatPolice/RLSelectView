@@ -13,13 +13,13 @@ typedef void(^DidClickViewItem)(id content);
     DidClickViewItem _didClickViewItem;
 }
 
+@property (nonatomic , assign)NSInteger lines;
 @property (nonatomic , copy)NSArray *contentList;
 
 
 @property (weak, nonatomic) IBOutlet UIView *selectView;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 
-//+ (RLSelectView *)allocRLSelectViewNib;
 
 
 -(void)didClickViewCallback:(DidClickViewItem)didClickItem;
